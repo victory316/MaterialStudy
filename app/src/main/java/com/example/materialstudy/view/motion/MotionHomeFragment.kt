@@ -43,13 +43,12 @@ class MotionHomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun setMaterialTransform() {
-        MaterialContainerTransform().apply {
-            fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
+    private fun setMaterialTransform(): MaterialContainerTransform {
+
+        return MaterialContainerTransform().apply {
+            fadeMode = MaterialContainerTransform.FADE_MODE_CROSS
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
             duration = 500
-        }.let {
-            sharedElementReturnTransition = it
         }
     }
 
@@ -61,7 +60,9 @@ class MotionHomeFragment : Fragment() {
                 (activity as MotionActivity).changeFragment(
                     binding.card,
                     binding.card.transitionName!!,
-                    MotionDetailFragment.newInstance()
+                    MotionDetailFragment.newInstance().apply {
+                        sharedElementEnterTransition = setMaterialTransform()
+                    }
                 )
 
                 viewModel.showDetailPage.value = false
