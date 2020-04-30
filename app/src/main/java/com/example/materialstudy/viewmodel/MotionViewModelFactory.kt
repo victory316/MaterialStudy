@@ -19,6 +19,6 @@ class MotionViewModelFactory(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MaterialViewModel(repository, handle) as T
+        return MotionViewModel(repository, handle) as T
     }
 }

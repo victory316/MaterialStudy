@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.FragmentMotionDetailBinding
+import com.google.android.material.transition.MaterialContainerTransform
 
 class MotionDetailFragment : Fragment() {
 
@@ -21,7 +22,20 @@ class MotionDetailFragment : Fragment() {
 
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_motion_detail, container, false)
+
+        setMaterialTransform()
+
         return binding.root
+    }
+
+    private fun setMaterialTransform() {
+        MaterialContainerTransform().apply {
+            fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
+            fitMode = MaterialContainerTransform.FIT_MODE_AUTO
+            duration = 500
+        }.let {
+            sharedElementReturnTransition = it
+        }
     }
 
     companion object {

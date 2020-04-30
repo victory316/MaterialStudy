@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.materialstudy.R
-import com.example.materialstudy.databinding.FragmentMotionDetailBinding
 import com.example.materialstudy.databinding.FragmentMotionHomeBinding
 import com.example.materialstudy.util.InjectorUtils
 import com.example.materialstudy.viewmodel.MotionViewModel
@@ -18,7 +18,7 @@ class MotionHomeFragment : Fragment() {
 
     private lateinit var binding: FragmentMotionHomeBinding
 
-    private val githubViewModel: MotionViewModel by viewModels {
+    private val viewModel: MotionViewModel by viewModels {
         InjectorUtils.provideMotionViewModel(this)
     }
 
@@ -32,7 +32,13 @@ class MotionHomeFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_motion_home, container, false)
 
+        binding.apply {
+            viewModel = this@MotionHomeFragment.viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+
         setMaterialTransform()
+        subscribeUi()
 
         return binding.root
     }
@@ -45,6 +51,22 @@ class MotionHomeFragment : Fragment() {
         }.let {
             sharedElementReturnTransition = it
         }
+    }
+
+    private fun subscribeUi() {
+        viewModel.showDetailPage.observe(viewLifecycleOwner, Observer {
+
+            if (it) {
+
+                (activity as MotionActivity).changeFragment(
+                    binding.card,
+                    binding.card.transitionName!!,
+                    MotionDetailFragment.newInstance()
+                )
+
+                viewModel.showDetailPage.value = false
+            }
+        })
     }
 
     companion object {

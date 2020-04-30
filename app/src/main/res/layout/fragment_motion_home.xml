@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.materialstudy.viewmodel.MotionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +24,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:textStyle="bold"
+                android:theme="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
                 android:text="Let's see how Motion works!"
+                android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,6 +58,8 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card"
+                        android:onClick="@{() -> viewModel.showDetailPage()}"
+                        android:transitionName="card_detail"
                         android:layout_width="200dp"
                         android:layout_height="350dp"
                         android:layout_margin="8dp">
@@ -72,13 +79,28 @@
 
                             <TextView
                                 android:id="@+id/card_title"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:text="SAMPLE CARD"
+                                android:text="CACTUS"
+                                android:theme="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
                                 android:textStyle="bold"
                                 android:layout_margin="10dp"
                                 app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/sample_card_image"/>
+
+                            <TextView
+                                android:id="@+id/card_contents"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:text="Filmed on June 15"
+                                android:theme="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
+                                android:layout_margin="10dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/card_title"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

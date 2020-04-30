@@ -2,6 +2,7 @@ package com.example.materialstudy.view.motion
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.materialstudy.R
@@ -26,7 +27,11 @@ class MotionActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun changeFragment(fragment: Fragment) {
-
+    fun changeFragment(view: View, sharedElementName: String, endFragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .addSharedElement(view, sharedElementName)
+            .replace(binding.mainFrameLayout.id, endFragment, endFragment.tag)
+            .addToBackStack(endFragment.tag)
+            .commit()
     }
 }
