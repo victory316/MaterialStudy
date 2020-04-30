@@ -22,6 +22,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
+                android:theme="@style/Widget.MaterialComponents.Button"
                 android:id="@+id/motion_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
