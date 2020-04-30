@@ -6,14 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.FragmentMotionDetailBinding
 import com.example.materialstudy.databinding.FragmentMotionHomeBinding
+import com.example.materialstudy.util.InjectorUtils
+import com.example.materialstudy.viewmodel.MotionViewModel
 import com.google.android.material.transition.MaterialContainerTransform
 
 class MotionHomeFragment : Fragment() {
 
     private lateinit var binding: FragmentMotionHomeBinding
+
+    private val githubViewModel: MotionViewModel by viewModels {
+        InjectorUtils.provideMotionViewModel(this)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
