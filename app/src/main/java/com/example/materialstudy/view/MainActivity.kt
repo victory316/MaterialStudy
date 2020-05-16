@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.ActivityMainBinding
+import com.example.materialstudy.view.chips.ChipsActivity
 import com.example.materialstudy.view.motion.MotionActivity
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.motionButton.setOnClickListener {
             startActivity(Intent(this, MotionActivity::class.java))
-            finish()
+        }
+
+        binding.chipsButton.setOnClickListener {
+            startActivity(Intent(this, ChipsActivity::class.java))
         }
     }
 }

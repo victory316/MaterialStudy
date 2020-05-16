@@ -20,6 +20,12 @@ class MotionActivity : AppCompatActivity() {
         setFirstFragment()
     }
 
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 1) finish()
+
+        super.onBackPressed()
+    }
+
     private fun setFirstFragment() {
         supportFragmentManager.beginTransaction()
             .replace(binding.mainFrameLayout.id, MotionHomeFragment.newInstance())
