@@ -12,6 +12,7 @@ Starting on April 29, 2020
 
 - [Motion](https://material.io/develop/android/theming/motion/ "google link")
 - [Cards](https://material.io/develop/android/components/cards/ "cards")
+- [Chips](https://material.io/develop/android/components/chip/ "chips")
 
 
 
