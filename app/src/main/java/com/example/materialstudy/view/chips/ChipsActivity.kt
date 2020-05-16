@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.materialstudy.databinding.ActivityChipsBinding
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
-import timber.log.Timber
 
 class ChipsActivity : AppCompatActivity() {
 
@@ -22,9 +20,14 @@ class ChipsActivity : AppCompatActivity() {
 
         binding.addChipButton.setOnClickListener {
 
-            Timber.d("adding chip! : $chipIndex")
-            val chip = Chip(this)
-            chip.text = "Chip $chipIndex"
+            val chip = Chip(this).apply {
+                text = "Chip $chipIndex"
+                isCloseIconVisible = true
+
+                setOnCloseIconClickListener {
+                    binding.chipGroup.removeView(this)
+                }
+            }
 
             chipIndex++
 

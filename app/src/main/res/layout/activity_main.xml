@@ -38,6 +38,14 @@
                 android:layout_height="wrap_content"
                 android:text="Show Chips"
                 android:elevation="5dp" />
+
+            <Button
+                android:theme="@style/Widget.MaterialComponents.Button"
+                android:id="@+id/bottomsheet_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Show Bottomsheet"
+                android:elevation="5dp" />
         </GridLayout>
 
         <TextView

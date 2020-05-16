@@ -121,7 +121,6 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chip_group"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
