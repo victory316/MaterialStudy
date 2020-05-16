@@ -35,6 +35,7 @@ class BottomsheetActivity : AppCompatActivity() {
                 addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
                     override fun onSlide(bottomSheet: View, slideOffset: Float) {
                         binding.closeButton.alpha = slideOffset
+                        binding.shadowView.alpha = slideOffset
                     }
 
                     override fun onStateChanged(bottomSheet: View, newState: Int) {
