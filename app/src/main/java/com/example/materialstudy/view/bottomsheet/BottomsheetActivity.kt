@@ -23,7 +23,7 @@ class BottomsheetActivity : AppCompatActivity() {
         setupBottomsheet()
     }
 
-    fun setupBottomsheet() {
+    private fun setupBottomsheet() {
         bottomSheetBehavior = (BottomSheetBehavior.from(binding.contentLayout)
                 as BottomSheetBehavior<View>)
             .apply {
@@ -31,6 +31,21 @@ class BottomsheetActivity : AppCompatActivity() {
                 isHideable = false
                 state = BottomSheetBehavior.STATE_COLLAPSED
                 isFitToContents = true
+
+                addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
+                    override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                        binding.closeButton.alpha = slideOffset
+                    }
+
+                    override fun onStateChanged(bottomSheet: View, newState: Int) {
+
+                    }
+
+                })
             }
+
+        binding.closeButton.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
     }
 }
