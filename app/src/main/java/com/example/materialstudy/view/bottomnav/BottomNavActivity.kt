@@ -21,21 +21,40 @@ class BottomNavActivity : AppCompatActivity() {
     }
 
     private fun setupBadges() {
-        var badge = binding.bottomNavigation.getOrCreateBadge(R.id.page_1)
-        badge.isVisible = true
-// An icon only badge will be displayed unless a number is set:
-//        badge.number = 99
+
+        with(binding.bottomNavigation) {
+
+            getOrCreateBadge(R.id.page_1).apply {
+                isVisible = true
+            }
+
+            getOrCreateBadge(R.id.page_2).apply {
+                isVisible = true
+                number = 35
+            }
+
+            getOrCreateBadge(R.id.page_3).apply {
+                isVisible = true
+                number = 1500
+            }
+        }
     }
 
     private fun setupNavMenu() {
-        binding.bottomNavigation.setOnNavigationItemReselectedListener {item ->
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {item ->
             when(item.itemId) {
                 R.id.page_1 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_1)
                 }
-                R.id.page_2 -> {}
-                R.id.page_3 -> {}
+                R.id.page_2 -> {
+                    binding.bottomNavigation.removeBadge(R.id.page_2)
+                }
+                R.id.page_3 -> {
+                    binding.bottomNavigation.removeBadge(R.id.page_3)
+                }
             }
+
+            true
         }
     }
 }
