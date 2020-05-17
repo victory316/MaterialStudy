@@ -8,12 +8,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.transition.Fade
+import androidx.transition.TransitionManager
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.FragmentMotionHomeBinding
 import com.example.materialstudy.util.InjectorUtils
 import com.example.materialstudy.viewmodel.MotionViewModel
 import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialFade
 
 class MotionHomeFragment : Fragment() {
 
@@ -39,6 +42,7 @@ class MotionHomeFragment : Fragment() {
         }
 
         setMaterialTransform()
+        setFloatingActionButton(container!!)
         subscribeUi()
 
         exitTransition = Hold()
@@ -52,6 +56,18 @@ class MotionHomeFragment : Fragment() {
             fadeMode = MaterialContainerTransform.FADE_MODE_IN
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
             duration = 500
+        }
+    }
+
+    private fun setFloatingActionButton(container: ViewGroup) {
+        binding.floatingActionButton.setOnClickListener {
+            // MaterialFade를 사용하고 싶으나 호환이 안되어 기본 Fade 옵션 적용
+//            val materialFade = MaterialFade.create()
+            val mFade = Fade(Fade.OUT);
+
+            TransitionManager.beginDelayedTransition(container, mFade)
+
+            it.visibility = View.INVISIBLE
         }
     }
 
