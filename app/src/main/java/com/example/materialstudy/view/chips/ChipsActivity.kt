@@ -2,6 +2,7 @@ package com.example.materialstudy.view.chips
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.materialstudy.databinding.ActivityChipsBinding
 import com.google.android.material.chip.Chip
 
@@ -27,12 +28,13 @@ class ChipsActivity : AppCompatActivity() {
                 setOnCloseIconClickListener {
                     binding.chipGroup.removeView(this)
                 }
+
+                layoutDirection = View.LAYOUT_DIRECTION_LOCALE
             }
 
             chipIndex++
 
             binding.chipGroup.addView(chip)
-            binding.chipGroup.invalidate()
         }
     }
 }
