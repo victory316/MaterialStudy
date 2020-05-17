@@ -10,11 +10,17 @@ Starting on April 29, 2020
 
 ### Completed
 
+Theming
+
 - [Motion](https://material.io/develop/android/theming/motion/ "google link")
+
+Components 
+
 - [Cards](https://material.io/develop/android/components/cards/ "cards")
 - [Chips](https://material.io/develop/android/components/chip/ "chips")
 - [BottomSheet](https://material.io/components/sheets-bottom#behavior "bottom sheet")
-
+- [Badge](https://material.io/develop/android/components/badging/ "badge")
+- [Bottom Navigation](https://material.io/develop/android/components/bottom-navigation/ "bottom navigation")
 
 # Screenshots
 
