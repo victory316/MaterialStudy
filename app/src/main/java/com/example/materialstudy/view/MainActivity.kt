@@ -30,5 +30,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomsheetButton.setOnClickListener {
             startActivity(Intent(this, BottomsheetActivity::class.java))
         }
+
+        binding.bottomNavButton.setOnClickListener {
+            startActivity(Intent(this, BottomsheetActivity::class.java))
+        }
     }
 }
