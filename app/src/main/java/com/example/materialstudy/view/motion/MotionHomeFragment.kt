@@ -49,7 +49,7 @@ class MotionHomeFragment : Fragment() {
     private fun setMaterialTransform(): MaterialContainerTransform {
 
         return MaterialContainerTransform().apply {
-            fadeMode = MaterialContainerTransform.FADE_MODE_CROSS
+            fadeMode = MaterialContainerTransform.FADE_MODE_IN
             fitMode = MaterialContainerTransform.FIT_MODE_AUTO
             duration = 500
         }
