@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.ActivityMainBinding
+import com.example.materialstudy.view.appbar.AppBarActivity
 import com.example.materialstudy.view.bottomnav.BottomNavActivity
 import com.example.materialstudy.view.bottomsheet.BottomsheetActivity
 import com.example.materialstudy.view.chips.ChipsActivity
@@ -34,6 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavButton.setOnClickListener {
             startActivity(Intent(this, BottomNavActivity::class.java))
+        }
+
+        binding.topAppBarButton.setOnClickListener {
+            startActivity(Intent(this, AppBarActivity::class.java))
         }
     }
 }

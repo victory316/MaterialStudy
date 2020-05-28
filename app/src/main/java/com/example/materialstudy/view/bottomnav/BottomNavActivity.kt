@@ -2,12 +2,16 @@ package com.example.materialstudy.view.bottomnav
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.ActivityBottomNavBinding
+import com.example.materialstudy.util.InjectorUtils
+import com.example.materialstudy.viewmodel.BottomNavViewModel
 
 class BottomNavActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomNavBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +45,8 @@ class BottomNavActivity : AppCompatActivity() {
     }
 
     private fun setupNavMenu() {
-        binding.bottomNavigation.setOnNavigationItemSelectedListener {item ->
-            when(item.itemId) {
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.page_1 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_1)
                 }

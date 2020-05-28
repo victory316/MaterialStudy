@@ -12,11 +12,23 @@
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
+        <ImageView
+            android:id="@+id/top_logo_view"
+            android:src="@drawable/material_design_logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/main_grid_layout"/>
+
         <GridLayout
+            android:id="@+id/main_grid_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:rowCount="4"
+            android:rowCount="5"
             android:columnCount="3"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -28,7 +40,7 @@
                 android:id="@+id/motion_button"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Show Motion"
+                android:text="Motion"
                 android:elevation="5dp" />
 
             <Button
@@ -36,7 +48,7 @@
                 android:id="@+id/chips_button"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Show Chips"
+                android:text="Chips"
                 android:elevation="5dp" />
 
             <Button
@@ -44,7 +56,7 @@
                 android:id="@+id/bottomsheet_button"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Show Bottomsheet"
+                android:text="Bottomsheet"
                 android:elevation="5dp" />
 
             <Button
@@ -52,7 +64,15 @@
                 android:id="@+id/bottom_nav_button"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Show Bottom Navigaton with badge"
+                android:text="Bottom Navigaton"
+                android:elevation="5dp" />
+
+            <Button
+                android:theme="@style/Widget.MaterialComponents.Button"
+                android:id="@+id/top_app_bar_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Top app bar"
                 android:elevation="5dp" />
         </GridLayout>
 

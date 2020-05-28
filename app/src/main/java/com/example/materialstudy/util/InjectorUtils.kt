@@ -22,4 +22,9 @@ object InjectorUtils {
         val repository = getGithubRepository(fragment.requireContext())
         return MotionViewModelFactory(repository, fragment)
     }
+
+    fun provideBottomViewModel(fragment: Fragment): MotionViewModelFactory{
+        val repository = getGithubRepository(fragment.requireContext())
+        return MotionViewModelFactory(repository, fragment)
+    }
 }
