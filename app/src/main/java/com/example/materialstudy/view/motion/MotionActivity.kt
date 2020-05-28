@@ -17,6 +17,7 @@ class MotionActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_motion)
 
+
         setFirstFragment()
     }
 
