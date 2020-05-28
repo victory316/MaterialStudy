@@ -16,4 +16,8 @@ class AppBarActivity : AppCompatActivity() {
 
         setContentView(binding.root)
     }
+
+    fun setupUI() {
+
+    }
 }
