@@ -3,6 +3,7 @@ package com.example.materialstudy.view.bottomnav
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.ActivityBottomNavBinding
 import com.example.materialstudy.util.InjectorUtils
@@ -20,6 +21,7 @@ class BottomNavActivity : AppCompatActivity() {
 
         setupBadges()
         setupNavMenu()
+        setupFragment(FirstFragment.newInstance("ho", "ha"))
 
         setContentView(binding.root)
     }
@@ -60,5 +62,12 @@ class BottomNavActivity : AppCompatActivity() {
 
             true
         }
+    }
+
+    private fun setupFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.frameLayout.id, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
