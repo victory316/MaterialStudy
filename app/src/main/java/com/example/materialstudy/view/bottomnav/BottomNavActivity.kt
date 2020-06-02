@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.ActivityBottomNavBinding
 import com.example.materialstudy.util.InjectorUtils
 import com.example.materialstudy.viewmodel.BottomNavViewModel
+import timber.log.Timber
 
 class BottomNavActivity : AppCompatActivity() {
 
@@ -21,7 +23,7 @@ class BottomNavActivity : AppCompatActivity() {
 
         setupBadges()
         setupNavMenu()
-        setupFragment(FirstFragment.newInstance("ho", "ha"))
+        setupFragment(FirstFragment.newInstance("ho", "ha"), "page_1")
 
         setContentView(binding.root)
     }
@@ -50,12 +52,18 @@ class BottomNavActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.page_1 -> {
+                    setupFragment(FirstFragment.newInstance("ho", "ha"), "page_1")
+
                     binding.bottomNavigation.removeBadge(R.id.page_1)
                 }
                 R.id.page_2 -> {
+                    setupFragment(SecondFragment.newInstance("ho", "ha"), "page_2")
+
                     binding.bottomNavigation.removeBadge(R.id.page_2)
                 }
                 R.id.page_3 -> {
+                    setupFragment(ThirdFragment.newInstance("ho", "ha"), "page_3")
+
                     binding.bottomNavigation.removeBadge(R.id.page_3)
                 }
             }
@@ -64,10 +72,32 @@ class BottomNavActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.frameLayout.id, fragment)
-            .addToBackStack(null)
-            .commit()
+    private fun setupFragment(fragment: Fragment, tag: String) {
+
+        // 1. Fragment가 존재하지 않으면 새롭게 생성한다.
+        Timber.d("setting up : $fragment | comparing with : ${supportFragmentManager.findFragmentByTag(tag)}")
+
+        if (supportFragmentManager.findFragmentByTag(tag) == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.frameLayout.id, fragment, tag)
+                .addToBackStack(tag)
+                .commit()
+
+            Timber.d("adding fragment : $fragment with tag $tag")
+        } else {
+            supportFragmentManager.popBackStack(tag, 0)
+
+            Timber.d("popping fragment : $fragment with tag $tag")
+        }
+
+        // 2. Fragment가 존재할 경우 backstack에서 pop한다.
+
+    }
+
+    override fun onBackPressed() {
+        finish()
+
+
+        super.onBackPressed()
     }
 }

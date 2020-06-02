@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.bottomnav.SecondFragment">
+    tools:context=".view.bottomnav.FirstFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="15dp"
-            android:text="FIRST FIRST!\n\n\n\n\n\n\STORE STORE!\n\n\n\n\n\n\STORE STORE!\n\n\n\n\n\n\SCROLLABLE CONTENTS!\n\n\n\n\n\n\SCROLLABLE CONTENTS!"
+            android:text="SECOND STORE!\n\n\n\n\n\n\STORE STORE!\n\n\n\n\n\n\STORE STORE!\n\n\n\n\n\n\SCROLLABLE CONTENTS!\n\n\n\n\n\n\SCROLLABLE CONTENTS!"
             android:textSize="50sp"/>
 
     </androidx.core.widget.NestedScrollView>
