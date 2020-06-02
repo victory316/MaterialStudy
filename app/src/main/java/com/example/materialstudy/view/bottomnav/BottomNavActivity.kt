@@ -73,13 +73,12 @@ class BottomNavActivity : AppCompatActivity() {
     }
 
     private fun setupFragment(fragment: Fragment, tag: String) {
+        Timber.d("fragment stack : ${supportFragmentManager.backStackEntryCount}")
 
         // 1. Fragment가 존재하지 않으면 새롭게 생성한다.
-        Timber.d("setting up : $fragment | comparing with : ${supportFragmentManager.findFragmentByTag(tag)}")
-
         if (supportFragmentManager.findFragmentByTag(tag) == null) {
             supportFragmentManager.beginTransaction()
-                .replace(binding.frameLayout.id, fragment, tag)
+                .add(binding.frameLayout.id, fragment, tag)
                 .addToBackStack(tag)
                 .commit()
 
