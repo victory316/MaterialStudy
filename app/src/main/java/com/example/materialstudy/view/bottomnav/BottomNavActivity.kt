@@ -125,13 +125,10 @@ class BottomNavActivity : AppCompatActivity() {
             supportFragmentManager.popBackStack(tag, 0)
             Timber.d("popping fragment : $fragment with tag $tag")
         }
-
-
     }
 
     override fun onBackPressed() {
         finish()
-
 
         super.onBackPressed()
     }
