@@ -1,13 +1,11 @@
 package com.example.materialstudy.util
 
-import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.materialstudy.data.BottomNavRepository
-import com.example.materialstudy.data.MaterialRepository
 import com.example.materialstudy.data.local.MainDatabase
-import com.example.materialstudy.viewmodel.MotionViewModelFactory
+import com.example.materialstudy.viewmodel.BottomNavViewModelFactory
 
 /**
  *
@@ -26,18 +24,18 @@ object InjectorUtils {
         return BottomNavRepository.getInstance(MainDatabase.getInstance(context.applicationContext)!!.mainDao())
     }
 
-    fun provideMotionViewModel(fragment: Fragment): MotionViewModelFactory{
+    fun provideMotionViewModel(fragment: Fragment): BottomNavViewModelFactory{
         val repository = getMainRespository(fragment.requireContext())
-        return MotionViewModelFactory(repository, fragment)
+        return BottomNavViewModelFactory(repository, fragment)
     }
 
-    fun provideBottomViewModel(fragment: Fragment): MotionViewModelFactory{
+    fun provideBottomViewModel(fragment: Fragment): BottomNavViewModelFactory{
         val repository = getMainRespository(fragment.requireContext())
-        return MotionViewModelFactory(repository, fragment)
+        return BottomNavViewModelFactory(repository, fragment)
     }
 
-    fun provideBottomViewModelOnActivity(activity: AppCompatActivity): MotionViewModelFactory{
+    fun provideBottomViewModelOnActivity(activity: AppCompatActivity): BottomNavViewModelFactory{
         val repository = getMainRespository(activity.application.applicationContext)
-        return MotionViewModelFactory(repository, activity)
+        return BottomNavViewModelFactory(repository, activity)
     }
 }

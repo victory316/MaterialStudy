@@ -23,7 +23,6 @@ class SecondFragment : Fragment() {
     private var param2: String? = null
 
     private val testViewModel: BottomNavViewModel by activityViewModels()
-
     private lateinit var binding: FragmentSecondBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

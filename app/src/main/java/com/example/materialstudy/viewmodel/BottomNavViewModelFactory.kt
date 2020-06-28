@@ -8,7 +8,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import com.example.materialstudy.data.BottomNavRepository
 import com.example.materialstudy.data.MaterialRepository
 
-class MotionViewModelFactory(
+class BottomNavViewModelFactory(
     private val repository: BottomNavRepository,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
