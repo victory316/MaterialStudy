@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
 
 import com.example.materialstudy.R
+import com.example.materialstudy.databinding.FragmentFirstBinding
 import com.example.materialstudy.util.InjectorUtils
 import com.example.materialstudy.viewmodel.BottomNavViewModel
 
@@ -27,6 +29,8 @@ class FirstFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var binding: FragmentFirstBinding
+
     private val myNavViewModel: BottomNavViewModel by viewModels {
         InjectorUtils.provideBottomViewModel(this)
     }
@@ -43,8 +47,18 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentFirstBinding.inflate(inflater, container, false)
+
+        setupUi(binding)
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return binding.root
+    }
+
+    private fun setupUi(binding: FragmentFirstBinding) {
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+        }
     }
 
     companion object {

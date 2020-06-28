@@ -13,4 +13,15 @@ class BottomNavViewModel internal constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    fun countFirstFragment() {
+
+    }
+
+    fun countSecondFragment() {
+
+    }
+
+    fun countThirdFragment() {
+
+    }
 }
