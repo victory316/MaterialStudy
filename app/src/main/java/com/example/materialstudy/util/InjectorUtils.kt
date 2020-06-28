@@ -20,22 +20,22 @@ object InjectorUtils {
 //        return MaterialRepository.getInstance(MainDatabase.getInstance(context.applicationContext)!!.mainDao())
 //    }
 
-    private fun getMainRespository(context: Context): BottomNavRepository {
+    private fun getBottomNavRepository(context: Context): BottomNavRepository {
         return BottomNavRepository.getInstance(MainDatabase.getInstance(context.applicationContext)!!.mainDao())
     }
 
     fun provideMotionViewModel(fragment: Fragment): BottomNavViewModelFactory{
-        val repository = getMainRespository(fragment.requireContext())
+        val repository = getBottomNavRepository(fragment.requireContext())
         return BottomNavViewModelFactory(repository, fragment)
     }
 
     fun provideBottomViewModel(fragment: Fragment): BottomNavViewModelFactory{
-        val repository = getMainRespository(fragment.requireContext())
+        val repository = getBottomNavRepository(fragment.requireContext())
         return BottomNavViewModelFactory(repository, fragment)
     }
 
     fun provideBottomViewModelOnActivity(activity: AppCompatActivity): BottomNavViewModelFactory{
-        val repository = getMainRespository(activity.application.applicationContext)
+        val repository = getBottomNavRepository(activity.application.applicationContext)
         return BottomNavViewModelFactory(repository, activity)
     }
 }
