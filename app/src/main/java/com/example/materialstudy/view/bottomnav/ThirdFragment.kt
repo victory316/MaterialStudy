@@ -6,25 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 
 import com.example.materialstudy.R
-import com.example.materialstudy.databinding.FragmentFirstBinding
+import com.example.materialstudy.databinding.FragmentThirdBinding
 import com.example.materialstudy.util.InjectorUtils
 import com.example.materialstudy.viewmodel.BottomNavViewModel
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class FirstFragment : Fragment() {
+class ThirdFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var binding: FragmentFirstBinding
     private val testViewModel: BottomNavViewModel by activityViewModels()
+
+    private lateinit var binding: FragmentThirdBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFirstBinding.inflate(inflater, container, false)
+        binding = FragmentThirdBinding.inflate(inflater, container, false)
 
         setupUi(binding)
 
@@ -46,7 +46,7 @@ class FirstFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupUi(binding: FragmentFirstBinding) {
+    private fun setupUi(binding: FragmentThirdBinding) {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = testViewModel
@@ -57,7 +57,7 @@ class FirstFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FirstFragment().apply {
+            ThirdFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
