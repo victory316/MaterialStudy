@@ -10,7 +10,7 @@ class BottomNavViewModel internal constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _firstFragmentCount = MutableLiveData<Int>()
+    val _firstFragmentCount = MutableLiveData<Int>()
     val firstFragmentCount: LiveData<Int>
         get() = _firstFragmentCount
 
@@ -21,8 +21,14 @@ class BottomNavViewModel internal constructor(
     fun countFirstFragment() {
 //        firstFragmentC
 //        repository.setFirstFragmentCount()
-        _firstFragmentCount.value?.let {previousValue ->
+
+        Timber.tag("badgeTest").d("tick tick")
+
+        _firstFragmentCount.value?.let { previousValue ->
+            Timber.tag("badgeTest").d("prev Value : $previousValue")
+
             _firstFragmentCount.postValue(previousValue + 1)
+//            firstFragmentCount.value = _firstFragmentCount
         }
     }
 

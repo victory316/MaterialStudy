@@ -36,6 +36,7 @@ class BottomNavActivity : AppCompatActivity() {
 
     private fun setupUi(binding: ActivityBottomNavBinding) {
         myNavViewModel.firstFragmentCount.observe(this, Observer { inputCount ->
+
             binding.bottomNavigation.getBadge(R.id.page_1)?.number = inputCount
         })
     }

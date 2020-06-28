@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 
 import com.example.materialstudy.R
@@ -35,6 +36,8 @@ class FirstFragment : Fragment() {
         InjectorUtils.provideBottomViewModel(this)
     }
 
+    private val testViewModel: BottomNavViewModel by activityViewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -58,6 +61,7 @@ class FirstFragment : Fragment() {
     private fun setupUi(binding: FragmentFirstBinding) {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
+            viewModel = testViewModel
         }
     }
 
