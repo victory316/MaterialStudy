@@ -26,22 +26,27 @@ class BottomNavViewModel internal constructor(
 
     init {
         _firstFragmentCount.postValue(0)
+        _secondFragmentCount.postValue(0)
+        _thirdFragmentCount.postValue(0)
     }
 
     fun countFirstFragment() {
         _firstFragmentCount.value?.let { previousValue ->
+            Timber.tag("liveTest").d("counting on first")
             _firstFragmentCount.postValue(previousValue + 1)
         }
     }
 
     fun countSecondFragment() {
         _secondFragmentCount.value?.let { previousValue ->
+            Timber.tag("liveTest").d("counting on second")
             _secondFragmentCount.postValue(previousValue + 1)
         }
     }
 
     fun countThirdFragment() {
         _thirdFragmentCount.value?.let { previousValue ->
+            Timber.tag("liveTest").d("counting on third")
             _thirdFragmentCount.postValue(previousValue + 1)
         }
     }

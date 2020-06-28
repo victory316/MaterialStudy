@@ -32,9 +32,9 @@ class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
 
-    private val myNavViewModel: BottomNavViewModel by viewModels {
-        InjectorUtils.provideBottomViewModel(this)
-    }
+//    private val myNavViewModel: BottomNavViewModel by viewModels {
+//        InjectorUtils.provideBottomViewModel(this)
+//    }
 
     private val testViewModel: BottomNavViewModel by activityViewModels()
 

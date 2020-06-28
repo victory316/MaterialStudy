@@ -36,14 +36,20 @@ class BottomNavActivity : AppCompatActivity() {
 
     private fun setupUi(binding: ActivityBottomNavBinding) {
         myNavViewModel.firstFragmentCount.observe(this, Observer { inputCount ->
+            Timber.tag("liveTest").d("listening : $inputCount")
+
             binding.bottomNavigation.getBadge(R.id.page_1)?.number = inputCount
         })
 
         myNavViewModel.secondFragmentCount.observe(this, Observer { inputCount ->
+            Timber.tag("liveTest").d("listening : $inputCount")
+
             binding.bottomNavigation.getBadge(R.id.page_2)?.number = inputCount
         })
 
         myNavViewModel.thirdFragmentCount.observe(this, Observer { inputCount ->
+            Timber.tag("liveTest").d("listening : $inputCount")
+
             binding.bottomNavigation.getBadge(R.id.page_3)?.number = inputCount
         })
     }
@@ -73,12 +79,15 @@ class BottomNavActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.page_1 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_1)
+                    setupFragment(FirstFragment.newInstance("ho", "ha"), "page_1")
                 }
                 R.id.page_2 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_2)
+                    setupFragment(SecondFragment.newInstance("ho", "ha"), "page_2")
                 }
                 R.id.page_3 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_3)
+                    setupFragment(ThirdFragment.newInstance("ho", "ha"), "page_3")
                 }
             }
 

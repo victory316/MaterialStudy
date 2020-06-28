@@ -30,6 +30,7 @@ class ThirdFragment : Fragment() {
     private var param2: String? = null
 
     private val testViewModel: BottomNavViewModel by activityViewModels()
+
     private lateinit var binding: FragmentThirdBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
