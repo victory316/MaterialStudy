@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 
 import com.example.materialstudy.R
+import com.example.materialstudy.databinding.FragmentThirdBinding
 import com.example.materialstudy.util.InjectorUtils
 import com.example.materialstudy.viewmodel.BottomNavViewModel
 
@@ -27,9 +29,8 @@ class ThirdFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private val myNavViewModel: BottomNavViewModel by viewModels {
-        InjectorUtils.provideBottomViewModel(this)
-    }
+    private val testViewModel: BottomNavViewModel by activityViewModels()
+    private lateinit var binding: FragmentThirdBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +44,19 @@ class ThirdFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentThirdBinding.inflate(inflater, container, false)
+
+        setupUi(binding)
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false)
+        return binding.root
+    }
+
+    private fun setupUi(binding: FragmentThirdBinding) {
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = testViewModel
+        }
     }
 
     companion object {

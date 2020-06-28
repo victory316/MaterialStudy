@@ -10,34 +10,40 @@ class BottomNavViewModel internal constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    // 각 프래그먼트들의 카운트를 Observing하는 LiveData
     val _firstFragmentCount = MutableLiveData<Int>()
     val firstFragmentCount: LiveData<Int>
         get() = _firstFragmentCount
+
+    val _secondFragmentCount = MutableLiveData<Int>()
+    val secondFragmentCount: LiveData<Int>
+        get() = _secondFragmentCount
+
+    val _thirdFragmentCount = MutableLiveData<Int>()
+    val thirdFragmentCount: LiveData<Int>
+        get() = _thirdFragmentCount
+
 
     init {
         _firstFragmentCount.postValue(0)
     }
 
     fun countFirstFragment() {
-//        firstFragmentC
-//        repository.setFirstFragmentCount()
-
-        Timber.tag("badgeTest").d("tick tick")
-
         _firstFragmentCount.value?.let { previousValue ->
-            Timber.tag("badgeTest").d("prev Value : $previousValue")
-
             _firstFragmentCount.postValue(previousValue + 1)
-//            firstFragmentCount.value = _firstFragmentCount
         }
     }
 
     fun countSecondFragment() {
-
+        _secondFragmentCount.value?.let { previousValue ->
+            _secondFragmentCount.postValue(previousValue + 1)
+        }
     }
 
     fun countThirdFragment() {
-
+        _thirdFragmentCount.value?.let { previousValue ->
+            _thirdFragmentCount.postValue(previousValue + 1)
+        }
     }
 
     private fun getSavedFavorite(): MutableLiveData<Int> {
