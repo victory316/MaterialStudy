@@ -36,24 +36,34 @@ class BottomNavActivity : AppCompatActivity() {
 
     private fun setupUi(binding: ActivityBottomNavBinding) {
         myNavViewModel.firstFragmentCount.observe(this, Observer { inputCount ->
-            Timber.tag("liveTest").d("listening : $inputCount")
 
-            binding.bottomNavigation.getBadge(R.id.page_1)?.number = inputCount
+            if (inputCount != 0) {
+                binding.bottomNavigation.getOrCreateBadge(R.id.page_1).apply {
+                    number = inputCount
+                }
+            }
         })
 
         myNavViewModel.secondFragmentCount.observe(this, Observer { inputCount ->
-            Timber.tag("liveTest").d("listening : $inputCount")
 
-            binding.bottomNavigation.getBadge(R.id.page_2)?.number = inputCount
+            if (inputCount != 0) {
+                binding.bottomNavigation.getOrCreateBadge(R.id.page_2).apply {
+                    number = inputCount
+                }
+            }
         })
 
         myNavViewModel.thirdFragmentCount.observe(this, Observer { inputCount ->
-            Timber.tag("liveTest").d("listening : $inputCount")
 
-            binding.bottomNavigation.getBadge(R.id.page_3)?.number = inputCount
+            if (inputCount != 0) {
+                binding.bottomNavigation.getOrCreateBadge(R.id.page_3).apply {
+                    number = inputCount
+                }
+            }
         })
     }
 
+    // 최초 Badge 설정
     private fun setupBadges() {
 
         with(binding.bottomNavigation) {
@@ -79,14 +89,17 @@ class BottomNavActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.page_1 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_1)
+                    myNavViewModel.clearFirstCount()
                     setupFragment(FirstFragment.newInstance("ho", "ha"), "page_1")
                 }
                 R.id.page_2 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_2)
+                    myNavViewModel.clearSecondCount()
                     setupFragment(SecondFragment.newInstance("ho", "ha"), "page_2")
                 }
                 R.id.page_3 -> {
                     binding.bottomNavigation.removeBadge(R.id.page_3)
+                    myNavViewModel.clearThirdCount()
                     setupFragment(ThirdFragment.newInstance("ho", "ha"), "page_3")
                 }
             }
@@ -107,12 +120,12 @@ class BottomNavActivity : AppCompatActivity() {
 
             Timber.d("adding fragment : $fragment with tag $tag")
         } else {
-            supportFragmentManager.popBackStack(tag, 0)
 
+            // 2. Fragment가 존재할 경우 backstack에서 pop한다.
+            supportFragmentManager.popBackStack(tag, 0)
             Timber.d("popping fragment : $fragment with tag $tag")
         }
 
-        // 2. Fragment가 존재할 경우 backstack에서 pop한다.
 
     }
 

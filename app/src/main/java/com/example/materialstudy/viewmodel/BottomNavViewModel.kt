@@ -11,15 +11,15 @@ class BottomNavViewModel internal constructor(
 ) : ViewModel() {
 
     // 각 프래그먼트들의 카운트를 Observing하는 LiveData
-    val _firstFragmentCount = MutableLiveData<Int>()
+    private val _firstFragmentCount = MutableLiveData<Int>()
     val firstFragmentCount: LiveData<Int>
         get() = _firstFragmentCount
 
-    val _secondFragmentCount = MutableLiveData<Int>()
+    private val _secondFragmentCount = MutableLiveData<Int>()
     val secondFragmentCount: LiveData<Int>
         get() = _secondFragmentCount
 
-    val _thirdFragmentCount = MutableLiveData<Int>()
+    private val _thirdFragmentCount = MutableLiveData<Int>()
     val thirdFragmentCount: LiveData<Int>
         get() = _thirdFragmentCount
 
@@ -49,6 +49,19 @@ class BottomNavViewModel internal constructor(
             Timber.tag("liveTest").d("counting on third")
             _thirdFragmentCount.postValue(previousValue + 1)
         }
+    }
+
+    // 탭 선택시에 카운트를 클리어 하도록 수행
+    fun clearFirstCount() {
+        _firstFragmentCount.postValue(0)
+    }
+
+    fun clearSecondCount() {
+        _secondFragmentCount.postValue(0)
+    }
+
+    fun clearThirdCount() {
+        _thirdFragmentCount.postValue(0)
     }
 
     private fun getSavedFavorite(): MutableLiveData<Int> {
