@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.ActivityBottomNavBinding
 import com.example.materialstudy.util.InjectorUtils
@@ -15,6 +16,9 @@ class BottomNavActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomNavBinding
 
+    private val myNavViewModel: BottomNavViewModel by viewModels {
+        InjectorUtils.provideBottomViewModelOnActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +29,15 @@ class BottomNavActivity : AppCompatActivity() {
         setupNavMenu()
         setupFragment(FirstFragment.newInstance("ho", "ha"), "page_1")
 
+        setupUi(binding)
+
         setContentView(binding.root)
+    }
+
+    private fun setupUi(binding: ActivityBottomNavBinding) {
+        myNavViewModel.firstFragmentCount.observe(this, Observer { inputCount ->
+            binding.bottomNavigation.getBadge(R.id.page_1)?.number = inputCount
+        })
     }
 
     private fun setupBadges() {
