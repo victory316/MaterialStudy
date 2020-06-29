@@ -13,6 +13,7 @@ import androidx.transition.TransitionManager
 import com.example.materialstudy.R
 import com.example.materialstudy.databinding.FragmentMotionHomeBinding
 import com.example.materialstudy.util.InjectorUtils
+import com.example.materialstudy.viewmodel.BottomNavViewModel
 import com.example.materialstudy.viewmodel.MotionViewModel
 import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform

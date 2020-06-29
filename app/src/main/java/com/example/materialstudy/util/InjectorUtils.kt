@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.materialstudy.data.BottomNavRepository
 import com.example.materialstudy.data.MaterialRepository
 import com.example.materialstudy.data.local.MainDatabase
+import com.example.materialstudy.viewmodel.BottomNavModelFactoty
 import com.example.materialstudy.viewmodel.MotionViewModelFactory
 
 /**
@@ -36,8 +37,8 @@ object InjectorUtils {
         return MotionViewModelFactory(repository, fragment)
     }
 
-    fun provideBottomViewModelOnActivity(activity: AppCompatActivity): MotionViewModelFactory{
+    fun provideBottomViewModelOnActivity(activity: AppCompatActivity): BottomNavModelFactoty{
         val repository = getMainRespository(activity.application.applicationContext)
-        return MotionViewModelFactory(repository, activity)
+        return BottomNavModelFactoty(repository, activity)
     }
 }

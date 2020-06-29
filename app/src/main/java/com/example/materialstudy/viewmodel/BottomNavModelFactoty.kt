@@ -5,10 +5,11 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.example.materialstudy.data.BottomNavRepository
 import com.example.materialstudy.data.MaterialRepository
 
 class BottomNavModelFactoty(
-    private val repository: MaterialRepository,
+    private val repository: BottomNavRepository,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
@@ -19,6 +20,6 @@ class BottomNavModelFactoty(
         modelClass: Class<T>,
         handle: SavedStateHandle
     ): T {
-        return MaterialViewModel(repository, handle) as T
+        return BottomNavViewModel(repository, handle) as T
     }
 }
