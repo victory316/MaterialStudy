@@ -33,7 +33,7 @@ class BottomNavRepository private constructor(private val dao: MainDao) {
 
         fun getInstance(dao: MainDao) =
             instance ?: synchronized(this) {
-                instance?: BottomNavRepository(dao)
+                instance ?: BottomNavRepository(dao)
                     .also { instance = it }
             }
     }
