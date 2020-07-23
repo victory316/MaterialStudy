@@ -1,5 +1,6 @@
 package com.example.materialstudy
 
+import com.example.materialstudy.di.DaggerMyComponent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,10 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+
+    @Test
+    fun testDagger() {
+        println(DaggerMyComponent.create().getString())
     }
 }
